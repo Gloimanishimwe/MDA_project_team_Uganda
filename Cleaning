@@ -1,0 +1,10 @@
+# Frequency of categories for categorical data
+for column in ['type', 'municipality', 'province', 'public', 'available']:
+    print(aed_locations[column].value_counts())
+# impute missing values variable number based central tendacy("Median")
+median_value = aed_locations['number'].median()
+aed_locations['number'] = aed_locations['number'].fillna(median_value)
+# Descriptive statistics for numeric columns
+print(aed_locations.describe())
+# Fill missing values or drop them
+df= aed_locations.fillna({'available': 'unknown','type':'unknown','number':median_value})
